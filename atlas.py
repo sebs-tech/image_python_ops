@@ -51,26 +51,17 @@ textures_list = os.listdir(textures_folder)
 col = 3
 row = int((len(textures_list) / col))
 
-print(col, row)
-
 # Determine the size of images ?
-texture_size = Image.open(textures_list[0]).size[0]
-print(texture_size)
+texture_size = Image.open(textures_list[0]).size[0])
 
 # Create blank image 
 atlas = Image.new("RGB", (texture_size * col, texture_size * row))
 
 # Paste each image into the atlas 
-
 for index, texture in enumerate(textures_list):
-    
-    #t = Image.open(texture)
     t = Image.open(os.path.join(textures_folder, texture))
-    #print(t)
-    
     x_offset = (index % col) * texture_size
     y_offset = (index // col) * texture_size
-    
     atlas.paste(t, (x_offset, y_offset))
 
 # Save the atlas 
